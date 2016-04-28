@@ -36,6 +36,8 @@ public class MovieOperator implements MovieOperatorsInterface {
                                 "Ned Stark, Lord of Winterfell, becomes the Hand of the King after the former Hand, Jon Arryn, has passed away. But before Ned goes to the capital, King's Landing, a letter arrives from his wife's sister Lysa, who was the wife of Jon Arryn. There it says that her husband was murdered, and it is up to Ned to find out what's going on. But that isn't everything. The White Walkers have been seen, and they seem to go down south",
                                 "https://static.omelete.uol.com.br/media/extras/conteudos/gameofthrones_logo_mQkVfzJ_Tpf2KK9.jpg");
 
+        movie1.setRating(3.2);
+
         Movie movie2 = new Movie("1",
                                 "Breaking Bad",
                                 "When chemistry teacher Walter White is diagnosed with Stage III cancer and given only two years to live, he decides he has nothing to lose. He lives with his teenage son, who has cerebral palsy, and his wife, in New Mexico. Determined to ensure that his family will have a secure future, Walt embarks on a career of drugs and crime. He proves to be remarkably proficient in this new world as he begins manufacturing and selling methamphetamine with one of his former students. The series tracks the impacts of a fatal diagnosis on a regular, hard working man, and explores how a fatal diagnosis affects his morality and transforms him into a major player of the drug trade. ",

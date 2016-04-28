@@ -20,6 +20,7 @@
             android:layout_weight="1">
 
             <include layout="@layout/rating_stars"
+                android:id="@+id/stars_container"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"/>

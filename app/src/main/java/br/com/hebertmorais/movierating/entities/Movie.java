@@ -6,7 +6,7 @@ import java.io.Serializable;
  * Created by Lucas on 27/04/16.
  */
 public class Movie implements Serializable{
-    private int rating;
+    private double rating;
     private String title;
     private String description;
     private String bannerUrl;
@@ -18,6 +18,7 @@ public class Movie implements Serializable{
         this.title = title;
         this.description = description;
         this.bannerUrl = bannerUrl;
+        this.rating = 0;
     }
 
     public String getId() {
@@ -28,7 +29,7 @@ public class Movie implements Serializable{
         this.id = id;
     }
 
-    public int getRating() {
+    public double getRating() {
         return rating;
     }
 
@@ -60,7 +61,7 @@ public class Movie implements Serializable{
         this.description = description;
     }
 
-    public void setRating(int rating) {
+    public void setRating(double rating) {
         this.rating = rating;
     }
 

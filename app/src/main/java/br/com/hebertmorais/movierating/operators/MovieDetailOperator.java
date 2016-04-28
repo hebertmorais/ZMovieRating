@@ -69,7 +69,7 @@ public class MovieDetailOperator {
                 if (movie.isFavorite()) {
                     heart.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_favorite_border_white_24dp));
                     isFavorite = false;
-                }else{
+                } else {
                     heart.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_favorite_white_24dp));
                     isFavorite = true;
 
@@ -81,7 +81,27 @@ public class MovieDetailOperator {
             }
         });
 
+    }
 
+    public static void setStars(View starsContainer, double rating){
+        Context context = starsContainer.getContext();
 
+        View[] stars = { starsContainer.findViewById(R.id.star1_imageView),
+                        starsContainer.findViewById(R.id.star2_imageView),
+                        starsContainer.findViewById(R.id.star3_imageView),
+                        starsContainer.findViewById(R.id.star4_imageView),
+                        starsContainer.findViewById(R.id.star5_imageView),
+        };
+
+        long intPartRating = (long) rating;
+        double fracPartRaring = rating - intPartRating;
+
+        for (int i = 0; i < intPartRating; i ++){
+            ((ImageView) stars[i]).setImageDrawable(context.getResources().getDrawable(R.drawable.ic_star_white_24dp));
+        }
+
+        if (fracPartRaring > 0){
+            ((ImageView) stars[(int)intPartRating]).setImageDrawable(context.getResources().getDrawable(R.drawable.ic_star_half_white_24dp));
+        }
     }
 }
