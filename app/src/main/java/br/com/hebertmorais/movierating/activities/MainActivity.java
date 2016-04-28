@@ -19,12 +19,12 @@ public class MainActivity extends AppCompatActivity {
 
         mSliderShow = (SliderLayout) findViewById(R.id.slider);
 
-        TextSliderView textSliderView = new TextSliderView(this);
+        /*TextSliderView textSliderView = new TextSliderView(this);
         textSliderView
                 .description("Game of Thrones")
                 .image("http://images.boomsbeat.com/data/images/full/19640/game-of-thrones-season-4-jpg.jpg");
 
-        mSliderShow.addSlider(textSliderView);
+        mSliderShow.addSlider(textSliderView);*/
 
 
 
