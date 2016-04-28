@@ -30,6 +30,8 @@ public class MovieDetail extends AppCompatActivity {
 
         Intent i = getIntent();
         Movie movie = (Movie) i.getSerializableExtra(MovieOperator.MOVIE_EXTRA);
+        getSupportActionBar().setTitle(movie.getTitle());
+
         ZoomImageOperator.bindMovieToView(movie, scrollView);
     }
 
