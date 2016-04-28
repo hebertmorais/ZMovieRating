@@ -3,6 +3,7 @@ package br.com.hebertmorais.movierating.activities;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.ImageView;
 
 import com.ecloud.pulltozoomview.PullToZoomScrollViewEx;
 
@@ -25,7 +26,9 @@ public class MovieDetail extends AppCompatActivity {
         Movie movie = (Movie) i.getSerializableExtra(MovieOperator.MOVIE_EXTRA);
         getSupportActionBar().setTitle(movie.getTitle());
 
+        ImageView favoriteImageView = (ImageView) findViewById(R.id.favorite_imageView);
         MovieDetailOperator.bindMovieToView(movie, scrollView);
+        MovieDetailOperator.favoriteListener(favoriteImageView, movie);
     }
 
 }

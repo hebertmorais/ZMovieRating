@@ -33,7 +33,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:id="@+id/imageView"
+                android:id="@+id/favorite_imageView"
                 android:src="@drawable/ic_favorite_border_white_24dp" />
         </FrameLayout>
 

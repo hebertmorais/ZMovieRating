@@ -55,4 +55,26 @@ public class MovieDetailOperator {
         TextView descriptionTextView = (TextView) scrollView.findViewById(R.id.description_textView);
         descriptionTextView.setText(movie.getDescription());
     }
+
+    public static void favoriteListener(final ImageView heart, final Movie movie){
+        final Context context = heart.getContext();
+
+        heart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (movie.isFavorite()) {
+                    heart.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_favorite_border_white_24dp));
+                    movie.setIsFavorite(false);
+                }else{
+                    heart.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_favorite_white_24dp));
+                    movie.setIsFavorite(true);
+
+                }
+
+            }
+        });
+
+
+
+    }
 }
