@@ -2,32 +2,35 @@ package br.com.hebertmorais.movierating.activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.ListView;
 
 import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.SliderTypes.TextSliderView;
 
 import br.com.hebertmorais.movierating.R;
+import br.com.hebertmorais.movierating.operators.MovieOperator;
 
 public class MainActivity extends AppCompatActivity {
 
     private SliderLayout mSliderShow;
+    private ListView mMoviesListView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        initViews();
+
+        MovieOperator operator = new MovieOperator();
+        operator.addImagesToSlider(mSliderShow);
+        operator.addMoviesToListView(mMoviesListView);
+
+    }
+
+    private void initViews() {
         mSliderShow = (SliderLayout) findViewById(R.id.slider);
-
-        /*TextSliderView textSliderView = new TextSliderView(this);
-        textSliderView
-                .description("Game of Thrones")
-                .image("http://images.boomsbeat.com/data/images/full/19640/game-of-thrones-season-4-jpg.jpg");
-
-        mSliderShow.addSlider(textSliderView);*/
-
-
-
+        mMoviesListView = (ListView) findViewById(R.id.movies_listView);
     }
 
     @Override

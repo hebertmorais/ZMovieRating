@@ -1,5 +1,7 @@
 package br.com.hebertmorais.movierating.operators;
 
+import android.widget.ListView;
+
 import com.daimajia.slider.library.SliderLayout;
 
 import java.util.List;
@@ -11,7 +13,7 @@ import br.com.hebertmorais.movierating.entities.Movie;
  */
 public interface MovieOperatorsInterface {
 
-    public List<Movie> MoviesCreator();
+    public void addImagesToSlider(SliderLayout slider);
 
-    public void setSlides(SliderLayout slider, List<Movie> movies);
+    public void addMoviesToListView(ListView listView);
 }
