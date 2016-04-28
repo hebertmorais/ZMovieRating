@@ -10,16 +10,24 @@ public class Movie implements Serializable{
     private String title;
     private String description;
     private String bannerUrl;
+    private boolean isFavorite;
 
-    public Movie(String title, String description, int rating, String bannerUrl ){
+    public Movie(String title, String description, String bannerUrl ){
         this.title = title;
         this.description = description;
-        this.rating = rating;
         this.bannerUrl = bannerUrl;
     }
 
     public int getRating() {
         return rating;
+    }
+
+    public boolean isFavorite() {
+        return isFavorite;
+    }
+
+    public void setIsFavorite(boolean isFavorite) {
+        this.isFavorite = isFavorite;
     }
 
     public String getBannerUrl() {
