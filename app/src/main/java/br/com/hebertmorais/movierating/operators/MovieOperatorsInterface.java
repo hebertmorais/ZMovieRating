@@ -13,6 +13,8 @@ import br.com.hebertmorais.movierating.entities.Movie;
  */
 public interface MovieOperatorsInterface {
 
+    public List<Movie> getMovies();
+
     public void addImagesToSlider(SliderLayout slider);
 
     public void addMoviesToListView(ListView listView);
