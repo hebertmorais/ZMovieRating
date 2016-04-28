@@ -17,14 +17,12 @@ import br.com.hebertmorais.movierating.operators.ZoomImageOperator;
 
 public class MovieDetail extends AppCompatActivity {
 
-    private PullToZoomScrollViewEx scrollView;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movie_detail);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        scrollView = (PullToZoomScrollViewEx) findViewById(R.id.scroll_view);
+        PullToZoomScrollViewEx scrollView = (PullToZoomScrollViewEx) findViewById(R.id.scroll_view);
         ZoomImageOperator.initZoomScrollView(scrollView);
     }
 
