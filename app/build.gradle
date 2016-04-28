@@ -28,5 +28,7 @@ dependencies {
     compile 'com.nineoldandroids:library:2.4.0'
     compile 'com.daimajia.slider:library:1.1.5@aar'
     compile 'com.github.frank-zhu:pullzoomview:1.0.0'
+    compile 'com.google.code.gson:gson:1.7.2'
+
 
 }
