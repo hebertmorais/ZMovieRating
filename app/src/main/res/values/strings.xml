@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">ZMovieRating</string>
+    <string name="hint_search">Search Movies/TV Shows</string>
 </resources>
