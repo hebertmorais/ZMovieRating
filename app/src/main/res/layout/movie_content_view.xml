@@ -3,14 +3,24 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/darkGray"
+    android:padding="16dp"
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/description_textView"
+        android:id="@+id/title_textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="20dp"
         android:textColor="@color/white"
         android:text="test1"
-        android:textSize="20sp" />
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Medium Text"
+        android:textColor="@color/white"
+        android:id="@+id/description_textView"
+        android:layout_marginTop="8dp" />
 </LinearLayout>

@@ -18,7 +18,7 @@ import br.com.hebertmorais.movierating.entities.Movie;
 /**
  * Created by Lucas on 28/04/16.
  */
-public class ZoomImageOperator {
+public class MovieDetailOperator {
 
     private static void setZoomImageMetrics(PullToZoomScrollViewEx scrollView){
         Context context = scrollView.getContext();

@@ -9,21 +9,34 @@
     <LinearLayout
         android:id="@+id/ll_action_button"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
+        android:orientation="horizontal"
         android:background="@color/transparentBlack"
-        android:showDividers="middle"
-        android:dividerPadding="16dp"
         android:layout_alignParentBottom="true">
 
-        <TextView
-            android:id="@+id/title_textView"
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="20dp"
-            android:textSize="18sp"
-            android:gravity="center"
-            android:layout_gravity="center"
-            android:textColor="@color/white" />
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <include layout="@layout/rating_stars"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"/>
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:id="@+id/imageView"
+                android:src="@drawable/ic_favorite_border_white_24dp" />
+        </FrameLayout>
+
 
     </LinearLayout>
 </RelativeLayout>
