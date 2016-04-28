@@ -13,6 +13,7 @@ import com.ecloud.pulltozoomview.PullToZoomScrollViewEx;
 import com.squareup.picasso.Picasso;
 
 import br.com.hebertmorais.movierating.R;
+import br.com.hebertmorais.movierating.database.DatabaseOperator;
 import br.com.hebertmorais.movierating.entities.Movie;
 
 /**
@@ -58,19 +59,25 @@ public class MovieDetailOperator {
 
     public static void favoriteListener(final ImageView heart, final Movie movie){
         final Context context = heart.getContext();
+        if (movie.isFavorite())
+            heart.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_favorite_white_24dp));
 
         heart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                boolean isFavorite;
                 if (movie.isFavorite()) {
                     heart.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_favorite_border_white_24dp));
-                    movie.setIsFavorite(false);
+                    isFavorite = false;
                 }else{
                     heart.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_favorite_white_24dp));
-                    movie.setIsFavorite(true);
+                    isFavorite = true;
 
                 }
 
+                movie.setIsFavorite(isFavorite);
+
+                DatabaseOperator.saveMovieFavorite(movie.getId(), isFavorite);
             }
         });
 
