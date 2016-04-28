@@ -3,6 +3,8 @@ package br.com.hebertmorais.movierating.operators;
 import android.content.Context;
 
 import org.json.*;
+
+import com.google.gson.JsonObject;
 import com.loopj.android.http.*;
 
 import cz.msebera.android.httpclient.Header;
@@ -28,21 +30,26 @@ public abstract class HttpOperator {
     public void get(String url){
 
 
-        client.get(url, new JsonHttpResponseHandler() {
+        client.get(url, new BaseJsonHttpResponseHandler<JSONObject>() {
 
             @Override
-            public void onSuccess(int statusCode, Header[] headers, JSONArray timeline) {
-                httpResponse( timeline, SUCCESS);
+            public void onSuccess(int statusCode, Header[] headers, String rawJsonResponse, JSONObject response) {
+                httpResponse(response, SUCCESS);
+
             }
 
             @Override
-            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
-                httpResponse( null, FAIL);
+            public void onFailure(int statusCode, Header[] headers, Throwable throwable, String rawJsonData, JSONObject errorResponse) {
+                httpResponse(null, FAIL);
+            }
 
+            @Override
+            protected JSONObject parseResponse(String rawJsonData, boolean isFailure) throws Throwable {
+                return null;
             }
 
         });
     }
 
-    protected abstract void httpResponse(JSONArray jsonArray, String fail);
+    protected abstract void httpResponse(JSONObject jsonObject, String fail);
 }

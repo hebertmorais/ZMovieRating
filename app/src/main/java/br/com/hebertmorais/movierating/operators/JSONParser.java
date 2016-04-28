@@ -1,7 +1,11 @@
 package br.com.hebertmorais.movierating.operators;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import br.com.hebertmorais.movierating.entities.Movie;
 
@@ -10,7 +14,7 @@ import br.com.hebertmorais.movierating.entities.Movie;
  */
 public class JSONParser {
 
-    public static Movie getMovieFromJson(JSONObject movieJson) throws JSONException{
+    private static Movie getMovieFromJson(JSONObject movieJson) throws JSONException{
 
         String imageBaseUrl = "http://image.tmdb.org/t/p/w500/";
 
@@ -33,4 +37,18 @@ public class JSONParser {
         return movie;
 
     }
+
+    private static List<Movie> getMoviesFromJsonArray(JSONArray array) throws JSONException{
+        ArrayList<Movie> movies = new ArrayList<>();
+        for (int i = 0; i < array.length(); i++) {
+            movies.add(getMovieFromJson(array.getJSONObject(i)));
+        }
+
+        return movies;
+    }
+
+    public static List<Movie> getMovies(JSONObject jsonObject) throws JSONException{
+        return getMoviesFromJsonArray(jsonObject.getJSONArray("results"));
+    }
+
 }
