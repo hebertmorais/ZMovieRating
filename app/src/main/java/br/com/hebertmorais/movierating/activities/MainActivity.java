@@ -8,6 +8,7 @@ import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.SliderTypes.TextSliderView;
 
 import br.com.hebertmorais.movierating.R;
+import br.com.hebertmorais.movierating.database.DatabaseOperator;
 import br.com.hebertmorais.movierating.operators.MovieOperator;
 
 public class MainActivity extends AppCompatActivity {
@@ -21,6 +22,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         initViews();
+
+        DatabaseOperator.loadDatabase(this);
 
         MovieOperator operator = new MovieOperator();
         operator.addImagesToSlider(mSliderShow);
