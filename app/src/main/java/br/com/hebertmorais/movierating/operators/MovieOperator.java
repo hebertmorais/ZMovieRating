@@ -1,6 +1,9 @@
 package br.com.hebertmorais.movierating.operators;
 
 import android.content.Context;
+import android.content.Intent;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -10,6 +13,7 @@ import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.com.hebertmorais.movierating.activities.MovieDetail;
 import br.com.hebertmorais.movierating.entities.Movie;
 
 /**
@@ -70,10 +74,18 @@ public class MovieOperator implements MovieOperatorsInterface {
 
     @Override
     public void addMoviesToListView(ListView moviesListView) {
-        Context context = moviesListView.getContext();
+        final Context context = moviesListView.getContext();
         ArrayAdapter<String> itemsAdapter =
                 new ArrayAdapter<>(context, android.R.layout.simple_list_item_1, getMoviesTitles(getMovies()));
         moviesListView.setAdapter(itemsAdapter);
+
+        moviesListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent i = new Intent(context, MovieDetail.class);
+                context.startActivity(i);
+            }
+        });
     }
 
     private List<String> getMoviesTitles(List<Movie> movies){
