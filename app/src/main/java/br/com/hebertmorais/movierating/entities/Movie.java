@@ -1,9 +1,11 @@
 package br.com.hebertmorais.movierating.entities;
 
+import java.io.Serializable;
+
 /**
  * Created by Lucas on 27/04/16.
  */
-public class Movie {
+public class Movie implements Serializable{
     private int rating;
     private String title;
     private String description;

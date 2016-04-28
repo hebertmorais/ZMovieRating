@@ -1,5 +1,6 @@
 package br.com.hebertmorais.movierating.activities;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
@@ -13,6 +14,8 @@ import android.widget.LinearLayout;
 import com.ecloud.pulltozoomview.PullToZoomScrollViewEx;
 
 import br.com.hebertmorais.movierating.R;
+import br.com.hebertmorais.movierating.entities.Movie;
+import br.com.hebertmorais.movierating.operators.MovieOperator;
 import br.com.hebertmorais.movierating.operators.ZoomImageOperator;
 
 public class MovieDetail extends AppCompatActivity {
@@ -24,6 +27,10 @@ public class MovieDetail extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         PullToZoomScrollViewEx scrollView = (PullToZoomScrollViewEx) findViewById(R.id.scroll_view);
         ZoomImageOperator.initZoomScrollView(scrollView);
+
+        Intent i = getIntent();
+        Movie movie = (Movie) i.getSerializableExtra(MovieOperator.MOVIE_EXTRA);
+        ZoomImageOperator.bindMovieToView(movie, scrollView);
     }
 
 }

@@ -5,11 +5,15 @@ import android.content.Context;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.ecloud.pulltozoomview.PullToZoomScrollViewEx;
+import com.squareup.picasso.Picasso;
 
 import br.com.hebertmorais.movierating.R;
+import br.com.hebertmorais.movierating.entities.Movie;
 
 /**
  * Created by Lucas on 28/04/16.
@@ -40,5 +44,15 @@ public class ZoomImageOperator {
     public static void initZoomScrollView(PullToZoomScrollViewEx scrollViewEx){
         setZoomImageMetrics(scrollViewEx);
         setViews(scrollViewEx);
+    }
+
+    public static void bindMovieToView(Movie movie, PullToZoomScrollViewEx scrollView) {
+        Context context = scrollView.getContext();
+        ImageView bannerImageView = (ImageView) scrollView.findViewById(R.id.zoom_imageView);
+        Picasso.with(context).load(movie.getBannerUrl()).centerCrop().fit().into(bannerImageView);
+        TextView titleTextView = (TextView) scrollView.findViewById(R.id.title_textView);
+        titleTextView.setText(movie.getTitle());
+        TextView descriptionTextView = (TextView) scrollView.findViewById(R.id.description_textView);
+        descriptionTextView.setText(movie.getDescription());
     }
 }

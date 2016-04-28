@@ -21,6 +21,7 @@ import br.com.hebertmorais.movierating.entities.Movie;
  */
 public class MovieOperator implements MovieOperatorsInterface {
 
+    public static final String MOVIE_EXTRA = "movie";
     private List<Movie> movies;
 
     public MovieOperator(){
@@ -83,6 +84,7 @@ public class MovieOperator implements MovieOperatorsInterface {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent i = new Intent(context, MovieDetail.class);
+                i.putExtra(MOVIE_EXTRA, getMovies().get(position));
                 context.startActivity(i);
             }
         });
