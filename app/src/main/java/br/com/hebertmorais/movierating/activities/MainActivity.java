@@ -1,7 +1,9 @@
-package br.com.hebertmorais.movierating;
+package br.com.hebertmorais.movierating.activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import br.com.hebertmorais.movierating.R;
 
 public class MainActivity extends AppCompatActivity {
 
