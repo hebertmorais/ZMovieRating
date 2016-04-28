@@ -11,8 +11,10 @@ public class Movie implements Serializable{
     private String description;
     private String bannerUrl;
     private boolean isFavorite;
+    private String id;
 
-    public Movie(String title, String description, String bannerUrl ){
+    public Movie(String id, String title, String description, String bannerUrl ){
+        this.id = id;
         this.title = title;
         this.description = description;
         this.bannerUrl = bannerUrl;
