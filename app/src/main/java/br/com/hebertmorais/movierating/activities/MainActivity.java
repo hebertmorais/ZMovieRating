@@ -1,15 +1,14 @@
 package br.com.hebertmorais.movierating.activities;
 
+import android.os.Bundle;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.SearchView;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
 
 import com.daimajia.slider.library.SliderLayout;
-import com.daimajia.slider.library.SliderTypes.TextSliderView;
 
 import br.com.hebertmorais.movierating.R;
 import br.com.hebertmorais.movierating.database.DatabaseOperator;

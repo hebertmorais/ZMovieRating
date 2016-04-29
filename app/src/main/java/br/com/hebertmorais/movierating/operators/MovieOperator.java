@@ -1,12 +1,13 @@
 package br.com.hebertmorais.movierating.operators;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.SliderTypes.TextSliderView;
@@ -17,6 +18,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.com.hebertmorais.movierating.R;
 import br.com.hebertmorais.movierating.activities.MovieDetail;
 import br.com.hebertmorais.movierating.entities.Movie;
 
@@ -26,16 +28,26 @@ import br.com.hebertmorais.movierating.entities.Movie;
 public class MovieOperator implements MovieOperatorsInterface {
 
     public static final String MOVIE_EXTRA = "movie";
+    private final ProgressDialog mProgress;
+    private final Context context;
     private List<Movie> movies;
     private SliderLayout slider;
     private ListView listView;
 
     public MovieOperator(SliderLayout mSliderShow, ListView mMoviesListView){
         String initialPage = "https://api.themoviedb.org/3/search/multi?api_key=47ef6cd90c98b57fb21a3aef91be9536&query=friends&language=en";
-        moviesCreator(initialPage);
 
         this.slider = mSliderShow;
         this.listView = mMoviesListView;
+        this.context = mSliderShow.getContext();
+
+        mProgress = new ProgressDialog(context);
+        mProgress.setMessage(context.getString(R.string.loading));
+        mProgress.setIndeterminate(false);
+        mProgress.setCancelable(false);
+
+        moviesCreator(initialPage);
+
     }
 
     private void updateListAndSlider(){
@@ -44,17 +56,23 @@ public class MovieOperator implements MovieOperatorsInterface {
     }
     private List<Movie> moviesCreator(String url) {
 
+        mProgress.show();
+
         ArrayList<Movie> response = new ArrayList<>();
 
         HttpOperator operator = new HttpOperator() {
             @Override
             protected void httpResponse(String jsonObject, String response) {
-                Log.i("jsonresponse", jsonObject);
-                try {
-                    movies = JSONParser.getMovies( new JSONObject(jsonObject));
-                    updateListAndSlider();
-                } catch (JSONException e) {
-                    e.printStackTrace();
+                mProgress.dismiss();
+                if (response.equals(HttpOperator.SUCCESS)) {
+                    try {
+                        movies = JSONParser.getMovies(new JSONObject(jsonObject));
+                        updateListAndSlider();
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                } else {
+                    Toast.makeText(context, context.getString(R.string.error), Toast.LENGTH_LONG ).show();
                 }
             }
         };
@@ -65,6 +83,8 @@ public class MovieOperator implements MovieOperatorsInterface {
     }
 
     public void bindMoviesToSlider(SliderLayout slider, List<Movie> movies) {
+
+        slider.removeAllSliders();
 
         for ( Movie m : movies){
             TextSliderView textSliderView = new TextSliderView(slider.getContext());
@@ -118,4 +138,6 @@ public class MovieOperator implements MovieOperatorsInterface {
         String url = "https://api.themoviedb.org/3/search/multi?api_key=47ef6cd90c98b57fb21a3aef91be9536&query=" + query + "&language=en";
         movies = moviesCreator(url);
     }
+
+
 }

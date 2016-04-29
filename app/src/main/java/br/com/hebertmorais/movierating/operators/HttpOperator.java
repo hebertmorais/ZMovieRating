@@ -1,11 +1,9 @@
 package br.com.hebertmorais.movierating.operators;
 
-import android.content.Context;
+import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.BaseJsonHttpResponseHandler;
 
-import org.json.*;
-
-import com.google.gson.JsonObject;
-import com.loopj.android.http.*;
+import org.json.JSONObject;
 
 import cz.msebera.android.httpclient.Header;
 
