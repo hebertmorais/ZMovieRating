@@ -19,12 +19,9 @@ public abstract class HttpOperator {
     public static String FAIL = "fail";
 
     private AsyncHttpClient client;
-    private Context context;
 
-    public HttpOperator(Context context){
+    public HttpOperator(){
         client = new AsyncHttpClient();
-        this.context = context;
-
     }
 
     public void get(String url){
@@ -34,13 +31,13 @@ public abstract class HttpOperator {
 
             @Override
             public void onSuccess(int statusCode, Header[] headers, String rawJsonResponse, JSONObject response) {
-                httpResponse(response, SUCCESS);
+                httpResponse(rawJsonResponse, SUCCESS);
 
             }
 
             @Override
             public void onFailure(int statusCode, Header[] headers, Throwable throwable, String rawJsonData, JSONObject errorResponse) {
-                httpResponse(null, FAIL);
+                httpResponse(rawJsonData, FAIL);
             }
 
             @Override
@@ -51,5 +48,5 @@ public abstract class HttpOperator {
         });
     }
 
-    protected abstract void httpResponse(JSONObject jsonObject, String fail);
+    protected abstract void httpResponse(String rawJson, String response);
 }

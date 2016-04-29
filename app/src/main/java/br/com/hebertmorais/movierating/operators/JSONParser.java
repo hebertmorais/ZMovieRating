@@ -1,5 +1,7 @@
 package br.com.hebertmorais.movierating.operators;
 
+import android.util.Log;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -48,6 +50,7 @@ public class JSONParser {
     }
 
     public static List<Movie> getMovies(JSONObject jsonObject) throws JSONException{
+        Log.i("jsonresponse", jsonObject.toString());
         return getMoviesFromJsonArray(jsonObject.getJSONArray("results"));
     }
 

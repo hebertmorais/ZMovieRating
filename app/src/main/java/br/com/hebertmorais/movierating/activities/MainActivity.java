@@ -30,9 +30,7 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
 
         DatabaseOperator.loadDatabase(this);
 
-        operator = new MovieOperator();
-        operator.addImagesToSlider(mSliderShow);
-        operator.addMoviesToListView(mMoviesListView);
+        operator = new MovieOperator(mSliderShow, mMoviesListView);
 
     }
 
@@ -53,6 +51,7 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
 
         MenuItem searchItem = menu.findItem(R.id.search);
         SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
+        searchView.setQueryHint(getString(R.string.hint_search));
         searchView.setOnQueryTextListener(this);
 
         return true;
@@ -60,6 +59,7 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
 
     @Override
     public boolean onQueryTextSubmit(String query) {
+        operator.searchMovies(query, mMoviesListView);
 
         return false;
     }
